@@ -1,25 +1,27 @@
 let myLibrary = JSON.parse(localStorage.getItem('library')) || [];
 
-const addLibrary = document.getElementById('submit');
+const form = document.getElementById('submit');
 const newButton = document.querySelector('.newButton');
 const closeButton = document.querySelector('.closeButton');
 const container = document.querySelector('.container');
 
-addLibrary.addEventListener('click', addBookToLibrary);
-addLibrary.addEventListener('click', displayForm);
-addLibrary.addEventListener('click', () => displayBooks(myLibrary.length - 1));
 newButton.addEventListener('click', displayForm);
+form.addEventListener('submit', addBookToLibrary);
+form.addEventListener('submit', displayForm);
+form.addEventListener('submit', (e) => displayBooks(e, myLibrary.length - 1));
 closeButton.addEventListener('click', displayForm);
 container.addEventListener('click', toogleReadStatus);
 
-function Book (title, author, pages, read){
+//Object Constructor
+function Book (title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(e) {
+    e.preventDefault()
  	const input1 = document.getElementById('title').value;
     const input2 = document.getElementById('author').value;
     const input3 = document.getElementById('pages').value;
@@ -29,7 +31,10 @@ function addBookToLibrary() {
     localStorage.setItem('library', JSON.stringify(myLibrary));
 }
 
-function displayBooks(i){
+function displayBooks(e, i) {
+    if (e !== null && e.target === form) {
+        e.preventDefault()
+    }
 
     const newDiv = document.createElement("div");
     newDiv.classList.add("book-card");
@@ -67,9 +72,11 @@ function displayBooks(i){
     container.appendChild(newDiv);
 }
 
-function displayForm(){
-	const form = document.querySelector('.form');
-    form.classList.toggle("display");
+function displayForm(e) {
+    if (e.target !== newButton) {
+        e.preventDefault()
+    }
+    form.classList.toggle("display");   
 }
 
 function deleteCard() {
@@ -84,7 +91,7 @@ function deleteCard() {
 
 function displayBooksInStorage(myLibrary) {
     for (let i = 0; i < myLibrary.length; i++) {
-        displayBooks(i);
+        displayBooks(null, i);
     }
 }
 
