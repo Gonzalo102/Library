@@ -4,6 +4,7 @@ const form = document.getElementById('submit');
 const newButton = document.querySelector('.newButton');
 const closeButton = document.querySelector('.closeButton');
 const container = document.querySelector('.container');
+const overlay = document.getElementById('overlay')
 
 newButton.addEventListener('click', displayForm);
 form.addEventListener('submit', addBookToLibrary);
@@ -29,6 +30,7 @@ function addBookToLibrary(e) {
 
     myLibrary.push( new Book(input1, input2, input3, input4));
     localStorage.setItem('library', JSON.stringify(myLibrary));
+
 }
 
 function displayBooks(e, i) {
@@ -78,14 +80,16 @@ function displayForm(e) {
     if (e.target !== newButton) {
         e.preventDefault()
     }
-    form.classList.add("display");   
+    form.classList.add("active");
+    overlay.classList.add("active")   
 }
 
 function closeForm (e) {
     if (e.target !== newButton) {
         e.preventDefault()
     }
-    form.classList.remove("display");
+    form.classList.remove("active");
+    overlay.classList.remove("active") 
 }
 
 function deleteCard() {
@@ -117,6 +121,7 @@ function addDefaultBook() {
     myLibrary.push( new Book('Harry Potter and The Prisoner of Azkaban', 'J. K. Rowling', 419, false));
     localStorage.setItem('library', JSON.stringify(myLibrary)); 
 }
+
 
 if (myLibrary.length == 0) addDefaultBook()
 displayBooksInStorage(myLibrary);

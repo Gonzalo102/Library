@@ -87,7 +87,7 @@ h2{
 .form{
   margin: 0 auto;
   width: 400px;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
@@ -100,7 +100,7 @@ h2{
   transition: 200ms ease-in-out;
 }
 
-.form.display{
+.form.active{
   transform: translate(-50%, -50%) scale(1);
 }
 
@@ -142,4 +142,21 @@ input:focus {
   width: 100%;
   justify-content: space-around;
   margin-top: 2em;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  pointer-events: all;
+  opacity: 1;
 }
