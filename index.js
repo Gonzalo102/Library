@@ -6,6 +6,7 @@ const closeButton = document.querySelector('.closeButton');
 const container = document.querySelector('.container');
 const overlay = document.getElementById('overlay')
 
+//EventListeners
 newButton.addEventListener('click', displayForm);
 form.addEventListener('submit', addBookToLibrary);
 form.addEventListener('submit', closeForm);
@@ -23,6 +24,7 @@ function Book (title, author, pages, read) {
 
 function addBookToLibrary(e) {
     e.preventDefault()
+    
  	const input1 = document.getElementById('title').value;
     const input2 = document.getElementById('author').value;
     const input3 = document.getElementById('pages').value;
@@ -30,7 +32,6 @@ function addBookToLibrary(e) {
 
     myLibrary.push( new Book(input1, input2, input3, input4));
     localStorage.setItem('library', JSON.stringify(myLibrary));
-
 }
 
 function displayBooks(e, i) {
@@ -80,6 +81,7 @@ function displayForm(e) {
     if (e.target !== newButton) {
         e.preventDefault()
     }
+    form.reset()
     form.classList.add("active");
     overlay.classList.add("active")   
 }
@@ -121,7 +123,6 @@ function addDefaultBook() {
     myLibrary.push( new Book('Harry Potter and The Prisoner of Azkaban', 'J. K. Rowling', 419, false));
     localStorage.setItem('library', JSON.stringify(myLibrary)); 
 }
-
 
 if (myLibrary.length == 0) addDefaultBook()
 displayBooksInStorage(myLibrary);

@@ -19,21 +19,6 @@ h1 {
   letter-spacing: 0.3em;
 }
 
-.deleteButton{
-  font-size: 1.2em;
-  background-color: rgba(201,134,134,0.8);
-  padding: 0.4em 1.5em;
-  margin: 0.5em;
-  border-radius: 10%;
-  color: #393B44;
-  font-weight: bolder;
-
-}
-
-.deleteButton:hover{
-  background-color: #C98686; 
-}
-
 .newButton{
   display: block;
   font-size: 2rem;
@@ -84,6 +69,21 @@ h2{
   font-size: 20px;
 }
 
+.deleteButton{
+  font-size: 1.2em;
+  background-color: rgba(201,134,134,0.8);
+  padding: 0.4em 1.5em;
+  margin: 0.5em;
+  border-radius: 10%;
+  color: #393B44;
+  font-weight: bolder;
+
+}
+
+.deleteButton:hover{
+  background-color: #C98686; 
+}
+
 .form{
   margin: 0 auto;
   width: 400px;
@@ -103,7 +103,6 @@ h2{
 .form.active{
   transform: translate(-50%, -50%) scale(1);
 }
-
 
 ul {
   list-style: none;
