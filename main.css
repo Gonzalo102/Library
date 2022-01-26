@@ -1,37 +1,52 @@
-body{
-  background: linear-gradient(to left, darkblue, black);
-  margin: 0 1em;
+*{
+  box-sizing: border-box;
 }
 
-.readlabel{
-  font-size: 1.5em;
-  margin: 0.5em;
+body{
+  background: #F1F3F8;
+  margin: 0;
+}
+
+header {
+  background-color: #D6E0F0;
+  color: #282A33;
+  padding: 50px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 60px;
+  letter-spacing: 0.3em;
 }
 
 .deleteButton{
-  font-size: 1.5em;
-  background-color: darkred;
-  color: white;
-  padding: 0.2em;
+  font-size: 1.2em;
+  background-color: rgba(201,134,134,0.8);
+  padding: 0.4em 1.5em;
   margin: 0.5em;
+  border-radius: 10%;
+  color: #393B44;
+  font-weight: bolder;
+
 }
 
 .deleteButton:hover{
-  color: red;
-  background-color: antiquewhite; 
+  background-color: #C98686; 
 }
 
 .newButton{
+  display: block;
   font-size: 2rem;
-  background-color: black;
-  color: white;
-  padding: 10px;
-  margin: 1em;
+  background-color: rgba(154,230,139,0.8);
+  color: #393B44;
+  font-weight: bold;
+  padding: 20px;
+  cursor: pointer;
+  margin: 50px auto;
 }
 
 .newButton:hover{
-  color: black;
-  background-color: wheat;
+  background-color: rgba(154,230,139,1);
 }
 
 h2{
@@ -42,17 +57,31 @@ h2{
 .container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 1rem;
+  grid-gap: 4rem;
+  margin: 0 50px;
+  padding: 0 200px;
 }
 
 .book-card{
-  background-color:lightsteelblue;
+  background-color: #E0E2E7;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 3px solid black;
+  border-radius: 5%;
+  color: #393B44;
+  font-weight: bolder;
+  border: 1px solid black;
+  padding: 20px;
+}
 
+.book-card:hover{
+  transform: scale(1.04);
+  transition: 200ms ease-in;
+}
+
+.book-card label {
+  font-size: 20px;
 }
 
 .form{
@@ -61,17 +90,20 @@ h2{
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0);
   z-index: 1;
   background-color: white;
   border: 2px solid black;
   border-radius: 1em;
-  padding: 1em;
+  padding: 2em;
+  font-size: 20px;
+  transition: 200ms ease-in-out;
 }
 
-.display{
-  display: none;
+.form.display{
+  transform: translate(-50%, -50%) scale(1);
 }
+
 
 ul {
   list-style: none;
@@ -79,23 +111,19 @@ ul {
   margin: 0;
 }
 
-li + li {
-  margin-top: 1em;
+.book-card div {
+  margin: 10px 0 15px;
 }
 
-.label {
-  display: inline-block;
-  width: 90px;
-  text-align: right;
-  font-size: 1.5em;
-  text-align: center;
+li + li {
+  margin-top: 2em;
 }
 
 .input {
   font: 1em sans-serif;
-  width: 300px;
-  box-sizing: border-box;
   border: 1px solid #999;
+  padding: 10px;
+  width: 100%;
 }
 
 input:focus {
@@ -103,6 +131,15 @@ input:focus {
 }
 
 .button {
-  padding-left: 90px; 
-  margin-left: .5em;
+  padding: 10px;
+  width: 30%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.form div {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 2em;
 }

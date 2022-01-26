@@ -7,9 +7,9 @@ const container = document.querySelector('.container');
 
 newButton.addEventListener('click', displayForm);
 form.addEventListener('submit', addBookToLibrary);
-form.addEventListener('submit', displayForm);
+form.addEventListener('submit', closeForm);
 form.addEventListener('submit', (e) => displayBooks(e, myLibrary.length - 1));
-closeButton.addEventListener('click', displayForm);
+closeButton.addEventListener('click', closeForm);
 container.addEventListener('click', toogleReadStatus);
 
 //Object Constructor
@@ -41,13 +41,14 @@ function displayBooks(e, i) {
     const newTitle = document.createElement("h2");
     const newAuthor = document.createElement("h2");
     const newPages = document.createElement("h2");
+    const inputDiv = document.createElement("div");
     const newLabel = document.createElement("label");
     const newCheckbox = document.createElement("input");
     const newDeleteButton = document.createElement("button");
 
     newTitle.textContent = myLibrary[i].title;
     newAuthor.textContent = myLibrary[i].author;
-    newPages.textContent = myLibrary[i].pages;
+    newPages.textContent = `${myLibrary[i].pages} Pages`;
     newLabel.textContent = "Read";
 
     newLabel.classList.add('readlabel');
@@ -63,11 +64,12 @@ function displayBooks(e, i) {
     newDeleteButton.classList.add('deleteButton');
     newDeleteButton.addEventListener('click', deleteCard);
 
-    newLabel.appendChild(newCheckbox);
+    inputDiv.appendChild(newCheckbox);
     newDiv.appendChild(newTitle);
     newDiv.appendChild(newAuthor);
     newDiv.appendChild(newPages);    
-    newDiv.appendChild(newLabel);
+    inputDiv.appendChild(newLabel);
+    newDiv.appendChild(inputDiv);
     newDiv.appendChild(newDeleteButton);
     container.appendChild(newDiv);
 }
@@ -76,7 +78,14 @@ function displayForm(e) {
     if (e.target !== newButton) {
         e.preventDefault()
     }
-    form.classList.toggle("display");   
+    form.classList.add("display");   
+}
+
+function closeForm (e) {
+    if (e.target !== newButton) {
+        e.preventDefault()
+    }
+    form.classList.remove("display");
 }
 
 function deleteCard() {
@@ -104,4 +113,10 @@ function toogleReadStatus(e) {
     localStorage.setItem('library', JSON.stringify(myLibrary));
 }
 
+function addDefaultBook() {
+    myLibrary.push( new Book('Harry Potter and The Prisoner of Azkaban', 'J. K. Rowling', 419, false));
+    localStorage.setItem('library', JSON.stringify(myLibrary)); 
+}
+
+if (myLibrary.length == 0) addDefaultBook()
 displayBooksInStorage(myLibrary);

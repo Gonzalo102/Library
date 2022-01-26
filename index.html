@@ -10,38 +10,33 @@
 
 </head>
 <body>
-    <center>
-      <button class="newButton">
-      NEW BOOK
-      </button>
-    </center>
-      <div class="container">
-      </div>
-        <form class="form display" action="" method="post" id="submit">
-         <ul>
-          <li>
-            <label class="label" for="name">Title:</label>
-            <input class="input" type="text" id="title" name="user_title" required>
-          </li>
-          <li>
-            <label class="label" for="mail">Author:</label>
-            <input class="input" type="text" id="author" name="user_author" required>
-          </li>
-          <li>
-            <label class="label" for="pages">Pages:</label>
-            <input class="input" type="number" id="pages" name="user_pages" required>
-          </li>
-          <li>
-            <label class="label" for="read">Read:</label>
-            <input type="checkbox" onclick="this.checked" id="read" name="user_read">
-          </li>
-          <li class="button">
-            <button type="submit" >Submit</button>
-          </li>
-          <li class="closeButton button">
-            <button type="button" id="close">Close</button>
-          </li>
-         </ul>
-        </form> 
+  <header>
+    <h1>Library</h1>
+  </header>
+  <button class="newButton">
+  ADD BOOK
+  </button>
+  <div class="container">
+  </div>
+  <form class="form display" action="" method="post" id="submit">
+    <ul>
+    <li>
+      <input placeholder="Title" class="input" type="text" id="title" name="user_title" required maxlength="40">
+    </li>
+    <li>
+      <input placeholder="Author" class="input" type="text" id="author" name="user_author" required maxlength="25">
+    </li>
+    <li>
+      <input placeholder="Pages" class="input" type="number" id="pages" name="user_pages" required min="1" max="100000">
+    </li>
+    <li>
+      <label class="label" for="read">Read:</label>
+      <input type="checkbox" onclick="this.checked" id="read" name="user_read">
+    </ul>
+    <div>
+      <button class="button" type="submit" >Submit</button>
+      <button class="closeButton button" type="button" id="close">Close</button>
+    </div>
+  </form> 
 </body>
 </html>
