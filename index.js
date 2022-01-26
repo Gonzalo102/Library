@@ -14,12 +14,14 @@ form.addEventListener('submit', (e) => displayBooks(e, myLibrary.length - 1));
 closeButton.addEventListener('click', closeForm);
 container.addEventListener('click', toogleReadStatus);
 
-//Object Constructor
-function Book (title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+//classes
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
 function addBookToLibrary(e) {
